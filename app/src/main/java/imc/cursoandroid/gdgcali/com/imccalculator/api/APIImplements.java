@@ -1,5 +1,6 @@
 package imc.cursoandroid.gdgcali.com.imccalculator.api;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -62,7 +63,7 @@ public class APIImplements {
     TokenResult tokenResult;
     String sbToken = "";
 
-    public String getTokenAuth(String body) {
+    public String getTokenAuth(String body) throws IOException {
         //Adicionar con ssl
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -77,19 +78,13 @@ public class APIImplements {
         final APIImplementService service = retrofit.create(APIImplementService.class);
 
         Call<TokenResponse> token = service.getTokenResponse(body);
-        token.enqueue(new Callback<TokenResponse>() {
-            @Override
-            public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
-                TokenResponse tokenResponse = response.body();
-                tokenResult = tokenResponse.getToken();
-                sbToken = tokenResult.getToken().toString();
-            }
 
-            @Override
-            public void onFailure(Call<TokenResponse> call, Throwable t) {
+        TokenResponse tokenResponse = token.execute().body();
 
-            }
-        });
+        tokenResult = tokenResponse.getToken();
+        sbToken = tokenResult.getToken().toString();
+
+
         return sbToken;
     }
 
