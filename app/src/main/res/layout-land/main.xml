@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="45dp"
+            android:gravity="center|center_vertical"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/id_peso"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Peso"
+
+                android:textSize="26sp" />
+
+            <EditText
+                android:id="@+id/id_et_peso"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+                android:inputType="numberDecimal" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/id_altura"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:text="Altura"
+                android:textSize="26sp" />
+
+            <EditText
+                android:id="@+id/id_et_altura"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/id_btn_calcular"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:onClick="calcular"
+                android:text="@string/calcular" />
+
+            <Button
+                android:id="@+id/id_btn_cancelar"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="60dp"
+                android:onClick="can"
+                android:text="@string/cancelar" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:layout_marginBottom="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:gravity="center|bottom"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/id_howisicm"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/how_is" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="500dp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/linearLayout1"
+        android:layout_toRightOf="@+id/linearLayout1">
+
+        <ListView
+            android:id="@+id/id_lstview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ListView>
+
+    </LinearLayout>
+</RelativeLayout>
