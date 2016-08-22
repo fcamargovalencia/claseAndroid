@@ -10,9 +10,13 @@ import imc.cursoandroid.gdgcali.com.imccalculator.api.response.TokenResponse;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.Obligacion;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.TokenResult;
 import imc.cursoandroid.gdgcali.com.imccalculator.util.EnvironmentFields;
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
@@ -59,8 +63,18 @@ public class APIImplements {
     String sbToken = "";
 
     public String getTokenAuth(String body) {
+        //Adicionar con ssl
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
-        final APIImplementService service;
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(EnvironmentFields.SERVER_IAGREE)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client)
+                .build();
+        final APIImplementService service = retrofit.create(APIImplementService.class);
 
         Call<TokenResponse> token = service.getTokenResponse(body);
         token.enqueue(new Callback<TokenResponse>() {
@@ -99,6 +113,20 @@ public class APIImplements {
                 armarQuery = armarQuery + "'token': '" + token + "',";
                 armarQuery = armarQuery + "'document_number_user': '" + EnvironmentFields.DOCUMENT_NUMBER_USER + "',";
                 armarQuery = armarQuery + "'document_type_user': '" + EnvironmentFields.DOCUMENT_TYPE_USER + "'}";
+
+                //Adicionar con ssl
+                HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+                interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+                OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
+
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl(EnvironmentFields.SERVER_IAGREE)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .client(client)
+                        .build();
+                final APIImplementService service = retrofit.create(APIImplementService.class);
+
 
                 Call<JSONResponse> responseCall = service.getJSONObligaciones(armarQuery);
                 responseCall.enqueue(new Callback<JSONResponse>() {
