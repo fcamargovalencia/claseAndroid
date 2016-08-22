@@ -1,11 +1,15 @@
-package imc.cursoandroid.gdgcali.com.imccalculator.api.response;
+package imc.cursoandroid.gdgcali.com.imccalculator.api;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import imc.cursoandroid.gdgcali.com.imccalculator.api.response.JSONResponse;
+import imc.cursoandroid.gdgcali.com.imccalculator.api.response.LoginResponse;
+import imc.cursoandroid.gdgcali.com.imccalculator.api.response.TokenResponse;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.Obligacion;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.TokenResult;
+import imc.cursoandroid.gdgcali.com.imccalculator.util.EnvironmentFields;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -41,7 +45,6 @@ public class APIImplements {
         Call<LoginResponse> getTokenLogin(@Body String json);
     }
 
-    APIImplementService service;
     List<Obligacion> lstObligacions;
 
     /**
@@ -57,6 +60,7 @@ public class APIImplements {
 
     public String getTokenAuth(String body) {
 
+        final APIImplementService service;
 
         Call<TokenResponse> token = service.getTokenResponse(body);
         token.enqueue(new Callback<TokenResponse>() {
@@ -85,16 +89,23 @@ public class APIImplements {
      * @return Call<JSONResponse>
      * @author josefbernam@gmail.com
      */
-    public List<Obligacion> getObligationsByClient(String bodytoken, String body) {
+    public List<Obligacion> getObligationsByClient(String bodytoken) {
         try {
             String token = getTokenAuth(bodytoken);
             if (token != null) {//TODO: Validaciones del token
-                Call<JSONResponse> responseCall = service.getJSONObligaciones(body);
+
+                String armarQuery = "{";
+                armarQuery = armarQuery + "'persistenceName': '" + EnvironmentFields.PERSISTENCE_NAME + "',";
+                armarQuery = armarQuery + "'token': '" + token + "',";
+                armarQuery = armarQuery + "'document_number_user': '" + EnvironmentFields.DOCUMENT_NUMBER_USER + "',";
+                armarQuery = armarQuery + "'document_type_user': '" + EnvironmentFields.DOCUMENT_TYPE_USER + "'}";
+
+                Call<JSONResponse> responseCall = service.getJSONObligaciones(armarQuery);
                 responseCall.enqueue(new Callback<JSONResponse>() {
                     @Override
                     public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
                         JSONResponse resp = response.body();
-                        lstObligacions = new ArrayList<Obligacion>(Arrays.asList(resp.getResult_array()));
+                        lstObligacions = new ArrayList<>(Arrays.asList(resp.getResult_array()));
 
                     }
 

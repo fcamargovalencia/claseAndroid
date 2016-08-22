@@ -7,35 +7,22 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Optional;
 import imc.cursoandroid.gdgcali.com.imccalculator.R;
-import imc.cursoandroid.gdgcali.com.imccalculator.adapter.ObligacionDataAdapter;
 import imc.cursoandroid.gdgcali.com.imccalculator.adapter.ResultAdapter;
 import imc.cursoandroid.gdgcali.com.imccalculator.adapter.ResultRecyclerAdapter;
 import imc.cursoandroid.gdgcali.com.imccalculator.api.Server;
-import imc.cursoandroid.gdgcali.com.imccalculator.api.response.JSONResponse;
-import imc.cursoandroid.gdgcali.com.imccalculator.api.response.LoginResponse;
-import imc.cursoandroid.gdgcali.com.imccalculator.api.response.TokenResponse;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.ResultModel;
-import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.Obligacion;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.ObligationsModel;
-import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.TokenResult;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.wp.RecentPostAnswer;
 import imc.cursoandroid.gdgcali.com.imccalculator.util.EnvironmentFields;
 import retrofit.Callback;
@@ -125,7 +112,7 @@ public class MainActivity extends Activity {
 
     @OnClick(R.id.id_ws)
     public void webService() {
-        Intent intent = new Intent(this, Card_Layout.class);
+        Intent intent = new Intent(this, ObligationActivity.class);
         startActivity(intent);
     }
 

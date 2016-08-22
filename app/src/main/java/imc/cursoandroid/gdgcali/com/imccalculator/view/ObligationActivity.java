@@ -10,11 +10,13 @@ import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import imc.cursoandroid.gdgcali.com.imccalculator.R;
 import imc.cursoandroid.gdgcali.com.imccalculator.adapter.ObligacionDataAdapter;
+import imc.cursoandroid.gdgcali.com.imccalculator.api.APIImplements;
 import imc.cursoandroid.gdgcali.com.imccalculator.api.Server;
 import imc.cursoandroid.gdgcali.com.imccalculator.api.response.JSONResponse;
 import imc.cursoandroid.gdgcali.com.imccalculator.api.response.LoginResponse;
@@ -24,11 +26,12 @@ import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.TokenResult;
 import imc.cursoandroid.gdgcali.com.imccalculator.util.EnvironmentFields;
 import retrofit2.Call;
 
-public class Card_Layout extends Activity {
+public class ObligationActivity extends Activity {
 
     Context context;
+    APIImplements apiImplements;
 
-    private ArrayList<Obligacion> data;
+    private List<Obligacion> listObligacion;
     private ObligacionDataAdapter obligacionAdapter;
     String loginResult = "";
     TokenResult tokenResult;
@@ -44,6 +47,7 @@ public class Card_Layout extends Activity {
         setContentView(R.layout.activity_card__layout);
         ButterKnife.bind(this);
         context = this;
+        apiImplements = new APIImplements();
         initViews();
     }
 
@@ -60,51 +64,17 @@ public class Card_Layout extends Activity {
 
 
         String consulta = "{'login':'acuerdos.com','password':'aUFncmVlMUBjb20='}";
-        Call<TokenResponse> token = Server.getSingleton().getTokenResponse(consulta);
-        token.enqueue(new retrofit2.Callback<TokenResponse>() {
-            @Override
-            public void onResponse(Call<TokenResponse> call, retrofit2.Response<TokenResponse> response) {
-                TokenResponse jsonResponse = response.body();
-                tokenResult = jsonResponse.getToken();
-                if (tokenResult != null) {
-                    result = tokenResult.getToken();
-
-                    String armarQuery = "{";
-                    armarQuery = armarQuery + "'persistenceName': '" + EnvironmentFields.PERSISTENCE_NAME + "',";
-                    armarQuery = armarQuery + "'token': '" + result + "',";
-                    armarQuery = armarQuery + "'document_number_user': '" + EnvironmentFields.DOCUMENT_NUMBER_USER + "',";
-                    armarQuery = armarQuery + "'document_type_user': '" + EnvironmentFields.DOCUMENT_TYPE_USER + "'}";
 
 
-                    Call<JSONResponse> callObli = Server.getSingleton().getJSONObligaciones(armarQuery);
-                    callObli.enqueue(new retrofit2.Callback<JSONResponse>() {
-                        @Override
-                        public void onResponse(Call<JSONResponse> call, retrofit2.Response<JSONResponse> response) {
-                            JSONResponse jsonResponse = response.body();
-                            data = new ArrayList<>(Arrays.asList(jsonResponse.getResult_array()));
-                            if (data != null && data.size() > 0) {
-                                obligacionAdapter = new ObligacionDataAdapter(data, context);
-                                recyclerCardView.setAdapter(obligacionAdapter);
-                            }
-                        }
 
-                        @Override
-                        public void onFailure(Call<JSONResponse> call, Throwable t) {
-                            Log.d("Error", t.getMessage());
-                        }
-                    });
-
-                }
+            listObligacion = new ArrayList<>();
+            listObligacion = apiImplements.getObligationsByClient(consulta);
+            if (listObligacion != null && listObligacion.size() > 0) {
+                obligacionAdapter = new ObligacionDataAdapter(listObligacion, context);
+                recyclerCardView.setAdapter(obligacionAdapter);
             }
+        }
 
-            @Override
-            public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Log.d("Error", t.getMessage());
-            }
-        });
-
-
-    }
 
 
     public void cargarObligaciones2() {
@@ -132,9 +102,9 @@ public class Card_Layout extends Activity {
                         @Override
                         public void onResponse(Call<JSONResponse> call, retrofit2.Response<JSONResponse> response) {
                             JSONResponse jsonResponse = response.body();
-                            data = new ArrayList<>(Arrays.asList(jsonResponse.getResult_array()));
-                            if (data != null && data.size() > 0) {
-                                obligacionAdapter = new ObligacionDataAdapter(data, context);
+                            listObligacion = new ArrayList<>(Arrays.asList(jsonResponse.getResult_array()));
+                            if (listObligacion != null && listObligacion.size() > 0) {
+                                obligacionAdapter = new ObligacionDataAdapter(listObligacion, context);
                                 recyclerCardView.setAdapter(obligacionAdapter);
                             }
                         }

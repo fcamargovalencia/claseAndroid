@@ -40,7 +40,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.GitHa" />
-        <activity android:name=".view.Card_Layout"></activity>
+        <activity android:name=".view.ObligationActivity"></activity>
     </application>
 
 </manifest>
