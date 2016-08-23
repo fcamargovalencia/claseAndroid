@@ -11,7 +11,7 @@ public class EnvironmentFields {
 
 
     public static final String SERVER = "http://www.jovitahandmade.com";
-    public static final String SERVER_IAGREE = "http://190.144.32.34:1090";
+    public static final String SERVER_IAGREE = "http://172.26.1.36:8080";
     public static final String GET_RECENT_POST = "get_recent_posts";
     public static final String PERSISTENCE_NAME = "172.16.32.81";
     public static final String DOCUMENT_NUMBER_USER = "0000025098604";

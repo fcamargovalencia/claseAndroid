@@ -2,7 +2,6 @@ package imc.cursoandroid.gdgcali.com.imccalculator.view;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -51,6 +50,29 @@ public class ObligationActivity extends Activity {
         initViews();
     }
 
+    public List<Obligacion> getListObligacion() {
+        return listObligacion;
+    }
+
+    public void setListObligacion(List<Obligacion> listObligacion) {
+        this.listObligacion = listObligacion;
+    }
+
+    public RecyclerView getRecyclerCardView() {
+        return recyclerCardView;
+    }
+
+    public void setRecyclerCardView(RecyclerView recyclerCardView) {
+        this.recyclerCardView = recyclerCardView;
+    }
+
+    public Context getContext() {
+        return context;
+    }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
 
     private void initViews() {
         //recyclerCardView = (RecyclerView) findViewById(R.id.card_recycler_view);
