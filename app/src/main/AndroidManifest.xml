@@ -40,10 +40,7 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".view.GitHa" />
-        <activity android:name=".view.ObligationActivity"></activity>
-
-
-
+        <activity android:name=".view.ObligationActivity" />
 
         <service android:name=".services.MyFirebaseMessagingService">
             <intent-filter>
@@ -51,6 +48,7 @@
             </intent-filter>
         </service>
 
+        <activity android:name=".view.ActivityLoginFb"></activity>
     </application>
 
 </manifest>
