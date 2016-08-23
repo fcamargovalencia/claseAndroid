@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "822543680269",
+    "firebase_url": "https://fcmclaseiagree.firebaseio.com",
+    "project_id": "fcmclaseiagree",
+    "storage_bucket": "fcmclaseiagree.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822543680269:android:5d83319696e4abed",
+        "android_client_info": {
+          "package_name": "imc.cursoandroid.gdgcali.com.imccalculator"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822543680269-7lnc0d0oebpn3ir4it69mkimd43v47vp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwzYc_o2VUX7zbXi-c8VwRVg5Tr0XG04Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

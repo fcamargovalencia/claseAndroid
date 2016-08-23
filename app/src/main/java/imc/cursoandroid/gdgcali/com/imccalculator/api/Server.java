@@ -44,7 +44,7 @@ public class Server {
         facade = AdapterWithHeaders.create(IServer.class);*/
 
 
-        //Adicionar con ssl
+        //TODO: Adicionar con ssl
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();

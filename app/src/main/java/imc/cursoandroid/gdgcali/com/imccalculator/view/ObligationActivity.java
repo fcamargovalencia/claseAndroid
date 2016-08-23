@@ -2,6 +2,7 @@ package imc.cursoandroid.gdgcali.com.imccalculator.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,6 +37,8 @@ public class ObligationActivity extends Activity {
     TokenResult tokenResult;
     String result = "";
 
+    private SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @BindView(R.id.card_recycler_view)
     RecyclerView recyclerCardView;
@@ -46,6 +49,10 @@ public class ObligationActivity extends Activity {
         setContentView(R.layout.activity_card__layout);
         ButterKnife.bind(this);
         context = this;
+        sharedPreferences = getApplicationContext().getSharedPreferences(EnvironmentFields.PREF_SP, MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+
+
         apiImplements = new APIImplements();
         initViews();
     }
@@ -85,18 +92,18 @@ public class ObligationActivity extends Activity {
     public void cargarObligaciones() {
 
 
-        String consulta = "{'login':'acuerdos.com','password':'aUFncmVlMUBjb20='}";
+//        String consulta = "{'login':'acuerdos.com','password':'aUFncmVlMUBjb20='}";
+        String consulta = "{'" + EnvironmentFields.SP_LOGIN + "':'" + sharedPreferences.getString(EnvironmentFields.SP_LOGIN, "") + "'," +
+                "'" + EnvironmentFields.SP_PASS + "':'" + sharedPreferences.getString(EnvironmentFields.SP_PASS, "") + "'}";
 
 
-
-            listObligacion = new ArrayList<>();
-            listObligacion = apiImplements.getObligationsByClient(consulta);
-            if (listObligacion != null && listObligacion.size() > 0) {
-                obligacionAdapter = new ObligacionDataAdapter(listObligacion, context);
-                recyclerCardView.setAdapter(obligacionAdapter);
-            }
+        listObligacion = new ArrayList<>();
+        listObligacion = apiImplements.getObligationsByClient(consulta);
+        if (listObligacion != null && listObligacion.size() > 0) {
+            obligacionAdapter = new ObligacionDataAdapter(listObligacion, context);
+            recyclerCardView.setAdapter(obligacionAdapter);
         }
-
+    }
 
 
     public void cargarObligaciones2() {

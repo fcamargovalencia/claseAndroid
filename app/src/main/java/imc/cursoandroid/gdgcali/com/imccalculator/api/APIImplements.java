@@ -2,6 +2,8 @@ package imc.cursoandroid.gdgcali.com.imccalculator.api;
 
 import android.os.AsyncTask;
 
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -164,6 +166,14 @@ public class APIImplements {
 
 
                 if (sbToken != null) {//TODO: Validaciones del token
+
+                    JSONObject json = new JSONObject();
+                    json.put("token", "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJkY2UxYTc0My1hN2YzLTQ5MjUtYmRiOS0yZjBhZGNmNjhlZDQiLCJpYXQiOjE0NzEwMTA0NTcsInN1YiI6IkFjdWVyZG9zLkNPTSIsImlzcyI6ImlhZ3JlZVVzZXI9YWN1ZXJkb3MuY29tIiwiZXhwIjoxNDcxMDUzNjU3fQ.tYShZZAFfx5e-NK5e5208JVb1-dkmSCbtnOTFgTKJuY");
+                    json.put("persistenceName", "172.16.32.81");
+                    json.put("document_number_user", "0000025098604");
+                    json.put("document_type_user", "CC");
+
+
 
                     String armarQuery = "{";
                     armarQuery = armarQuery + "'persistenceName': '" + EnvironmentFields.PERSISTENCE_NAME + "',";
