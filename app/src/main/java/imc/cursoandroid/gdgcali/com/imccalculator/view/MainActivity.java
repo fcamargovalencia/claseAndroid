@@ -34,7 +34,6 @@ public class MainActivity extends Activity {
 
 
     double dPeso, dAltura, dIMC;
-    ResultAdapter adapter;
     ResultRecyclerAdapter adapterRecycler;
     List<ResultModel> lstResult;
 
@@ -44,15 +43,6 @@ public class MainActivity extends Activity {
 
     @BindView(R.id.id_et_altura)
     EditText altura;
-
-    @BindView(R.id.id_btn_calcular)
-    Button btnCalcular;
-
-    @BindView(R.id.id_btn_cancelar)
-    Button btnCancelar;
-
-    @BindView(R.id.id_howisicm)
-    Button btnHoIs;
 
 //    @BindView(R.id.id_lstview)
 //    ListView lvResults;

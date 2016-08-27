@@ -2,13 +2,8 @@ package imc.cursoandroid.gdgcali.com.imccalculator.util;
 
 import android.app.Application;
 import android.content.SharedPreferences;
-import android.opengl.EGLDisplay;
-
 import imc.cursoandroid.gdgcali.com.imccalculator.api.Server;
-import retrofit.RequestInterceptor;
 import retrofit.RestAdapter;
-import retrofit.client.OkClient;
-import retrofit.converter.GsonConverter;
 
 /**
  * Created by joseberna on 16/08/16.

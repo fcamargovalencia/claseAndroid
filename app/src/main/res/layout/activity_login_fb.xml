@@ -11,7 +11,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:orientation="vertical"
-    tools:context=".view.ActivityLoginFb">
+    tools:context=".view.LoginFbActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -54,7 +54,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/id_buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
