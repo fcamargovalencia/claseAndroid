@@ -42,7 +42,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".view.LoginFbActivity"></activity>
+        <activity android:name=".view.LoginFbActivity" />
         <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -50,7 +50,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.AdminUserFBActivity"></activity>
+        <activity android:name=".view.AdminUserFBActivity" />
+        <activity android:name=".view.ChatActivity" />
+        <activity android:name=".view.MessageActivity"></activity>
     </application>
 
 </manifest>
