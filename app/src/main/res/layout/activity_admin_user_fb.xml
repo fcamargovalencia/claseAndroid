@@ -23,6 +23,7 @@
             android:textSize="20dp" />
 
         <EditText
+
             android:id="@+id/id_nombre_singup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
