@@ -19,7 +19,7 @@
         <activity
             android:name=".view.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".view.DetailActivity" />
         <activity android:name=".view.WebActivity" />
         <activity
@@ -42,9 +42,7 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".view.LoginFbActivity">
-
-        </activity>
+        <activity android:name=".view.LoginFbActivity"></activity>
         <activity android:name=".view.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,6 +50,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.AdminUserFBActivity"></activity>
     </application>
 
 </manifest>
