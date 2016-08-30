@@ -48,7 +48,6 @@ public class LoginFbActivity extends Activity {
     }
 
 
-
     @OnClick(R.id.id_buttonLogin)
     public void login() {
 
@@ -79,6 +78,7 @@ public class LoginFbActivity extends Activity {
                 if (!task.isSuccessful()) {
                     Toast.makeText(LoginFbActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                     onLoginFailed();
+                    progressDialog.dismiss();
                 } else {
                     Toast.makeText(LoginFbActivity.this, "Authentication Success.", Toast.LENGTH_SHORT).show();
                     onLoginSuccess();
@@ -121,8 +121,11 @@ public class LoginFbActivity extends Activity {
 
     public void onLoginFailed() {
         Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(LoginFbActivity.this, AdminUserFBActivity.class);
+        startActivity(intent);
+//        buttonLogin.setEnabled(true);
+        finish();
 
-        buttonLogin.setEnabled(true);
     }
 
     public boolean validate() {
