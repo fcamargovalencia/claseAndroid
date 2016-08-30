@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +34,8 @@ import retrofit.client.Response;
 
 public class MainActivity extends Activity {
     Context context;
+    DatabaseReference database ;
+    DatabaseReference myRef ;
 
 
     double dPeso, dAltura, dIMC;
@@ -55,6 +60,8 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_rv);
+        database = FirebaseDatabase.getInstance().getReference();
+        myRef = database.child("condition");
 
         ButterKnife.bind(this);
         context = this;
