@@ -11,8 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +38,8 @@ import retrofit.client.Response;
 
 public class MainActivity extends Activity {
     Context context;
-    DatabaseReference database ;
-    DatabaseReference myRef ;
+    DatabaseReference database;
+    DatabaseReference myRef;
 
 
     double dPeso, dAltura, dIMC;
@@ -68,6 +72,8 @@ public class MainActivity extends Activity {
         lstResult = new ArrayList<>();
         //loadRecentPost();
         //loadObligations();
+
+
     }
 
     @OnClick(R.id.id_btn_calcular)
@@ -91,6 +97,35 @@ public class MainActivity extends Activity {
 
         peso.setText("");
         altura.setText("");
+
+        uploadFirebase();
+    }
+
+    private void uploadFirebase() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference();
+        ObligationsModel obj = new ObligationsModel();
+        obj.setClient(new Integer(777));
+        obj.setObligation_number(new Integer(777));
+
+        databaseReference.child(EnvironmentFields.PREF_SP).child(obj.getObligation_number().toString()).setValue(obj);
+    }
+
+
+    private void updateFirebase() {
+        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference databaseReference = firebaseDatabase.getReference(EnvironmentFields.PREF_SP);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                Toast.makeText(context, "Nueva info...", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @OnClick(R.id.id_howisicm)
@@ -112,8 +147,6 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, ObligationActivity.class);
         startActivity(intent);
     }
-
-
 
 
 }

@@ -47,16 +47,7 @@ public class LoginFbActivity extends Activity {
         context = this;
     }
 
-    /*
-    @OnClick(R.id.id_buttonLogin)
-    public void loginFbAction(){
-        login();
 
-        String emailResult = email.getText().toString();
-        String passResult = pass.getText().toString();
-
-    }
-    */
 
     @OnClick(R.id.id_buttonLogin)
     public void login() {

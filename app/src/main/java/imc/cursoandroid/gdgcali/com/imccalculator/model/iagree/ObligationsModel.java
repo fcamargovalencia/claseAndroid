@@ -30,6 +30,9 @@ public class ObligationsModel {
     @SerializedName("fecha_final")
     private String fecha_final;
 
+    public ObligationsModel() {
+    }
+
     public ObligationsModel(Integer obligation_number, Integer overdue_balance, Integer capital, Integer capital_balance, Integer interest, Integer campaign_number, Integer client, String fecha_final) {
         this.obligation_number = obligation_number;
         this.overdue_balance = overdue_balance;
