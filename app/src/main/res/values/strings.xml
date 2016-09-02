@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">IMCCalculator</string>
+    <string name="app_name">iAgree</string>
     <string name="calcular">Calcular</string>
     <string name="cancelar">Cancelar</string>
     <string name="how_is">Qué es IMC?</string>

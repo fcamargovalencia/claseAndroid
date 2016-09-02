@@ -8,10 +8,11 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".view.SplashActivity"
-    android:background="@color/zxing_custom_viewfinder_laser">
+    android:background="@drawable/login_back"
+    >
 
     <ImageView
-        android:src="@drawable/iagreelogo2"
+        android:src="@drawable/screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"></ImageView>
 </RelativeLayout>
