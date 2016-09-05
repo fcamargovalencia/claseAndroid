@@ -42,9 +42,10 @@
                 android:id="@+id/id_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/cardview_light_background"
-                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
                 android:hint="Email"
+                android:text="prueba@gmail.com"
                 android:textSize="20dp"
                 android:inputType="textEmailAddress" />
         </android.support.design.widget.TextInputLayout>
@@ -62,8 +63,9 @@
                 android:id="@+id/id_pass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/cardview_light_background"
-                android:textColor="@color/cardview_light_background"
+                android:textColorHint="@color/black"
+                android:textColor="@color/black"
+                android:text="qwerty"
                 android:hint="Password"
                 android:textSize="20dp"
                 android:inputType="textPassword" />

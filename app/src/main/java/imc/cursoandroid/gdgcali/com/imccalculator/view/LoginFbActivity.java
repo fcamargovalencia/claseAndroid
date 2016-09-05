@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import imc.cursoandroid.gdgcali.com.imccalculator.R;
+import imc.cursoandroid.gdgcali.com.imccalculator.util.EnvironmentFields;
 
 public class LoginFbActivity extends Activity {
 
@@ -45,7 +47,29 @@ public class LoginFbActivity extends Activity {
         mFireBaseAuth = FirebaseAuth.getInstance();
         ButterKnife.bind(this);
         context = this;
+        SharedPreferences sharedPref = context.getSharedPreferences(
+                "credenciales", context.MODE_PRIVATE);
+//        if (sharedPref.contains("email")) {
+//            Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        setContentView(R.layout.activity_login_fb);
+//        context = this;
+//        SharedPreferences sharedPref = context.getSharedPreferences(
+//                "credenciales", context.MODE_PRIVATE);
+//        if (sharedPref.contains("email")) {
+//            Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
+//            startActivity(intent);
+//            finish();
+//        }
+//    }
+
 
 
     @OnClick(R.id.id_buttonLogin)
@@ -114,6 +138,12 @@ public class LoginFbActivity extends Activity {
     public void onLoginSuccess() {
         buttonLogin.setEnabled(true);
         Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
+        SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("credenciales", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("email", email.getText().toString());
+        editor.putString("contrasena", pass.getText().toString());
+
+        editor.commit();
         startActivity(intent);
         finish();
 

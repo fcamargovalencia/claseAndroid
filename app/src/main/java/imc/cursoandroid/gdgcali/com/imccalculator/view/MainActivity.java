@@ -114,13 +114,19 @@ public class MainActivity extends Activity {
     }
 
 
-    private void updateFirebase() {
+    private void listenerFirebase() {
         FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference(EnvironmentFields.PREF_SP);
+        DatabaseReference databaseReference = firebaseDatabase.getReference(EnvironmentFields.PREF_IMC_SP);
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(context, "Nueva info...", Toast.LENGTH_LONG).show();
+                List<ResultModel> lstFirebaseModel = (List<ResultModel>) dataSnapshot.getValue();
+
+
+                        adapterRecycler = new ResultRecyclerAdapter( lstResult, context);
+                recyclerView.setAdapter(adapterRecycler);
+
             }
 
             @Override
@@ -150,5 +156,10 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        listenerFirebase();
 
+    }
 }
