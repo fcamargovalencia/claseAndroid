@@ -21,7 +21,8 @@ public class EnvironmentFields {
     public static final String SP_LOGIN_CONSTANTE = "acuerdos.com";
     public static final String SP_PASS = "password";
     public static final String SP_PASS_CONSTANTE = "aUFncmVlMUBjb20=";
-
+    public static final String URL_FIREBASE_CHAT = "https://fcmclaseiagree.firebaseio.com/";
+    public static final String SUB_FIREBASE_CHAT = "CHAT";
 
 
     public static final String PREF_SP = "iagree";

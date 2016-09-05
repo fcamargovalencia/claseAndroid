@@ -98,17 +98,19 @@ public class MainActivity extends Activity {
         peso.setText("");
         altura.setText("");
 
-        uploadFirebase();
+        uploadFirebase(resultModel);
     }
 
-    private void uploadFirebase() {
-        FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference databaseReference = firebaseDatabase.getReference();
-        ObligationsModel obj = new ObligationsModel();
-        obj.setClient(new Integer(777));
-        obj.setObligation_number(new Integer(777));
+    private void uploadFirebase(Object resultModel) {
+        try {
+            ResultModel result = (ResultModel) resultModel;
+            FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+            DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-        databaseReference.child(EnvironmentFields.PREF_SP).child(obj.getObligation_number().toString()).setValue(obj);
+            databaseReference.child(EnvironmentFields.PREF_SP).child(result.getId() + "").setValue(result);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 
@@ -131,13 +133,13 @@ public class MainActivity extends Activity {
     @OnClick(R.id.id_howisicm)
     public void howIs() {
         Toast.makeText(context, "Abriendo otro activity...", Toast.LENGTH_LONG).show();
-        Intent intNext = new Intent(this, DetailActivity.class);
-        Bundle bdParams = new Bundle();
-        bdParams.putString(EnvironmentFields.K_PARAMS_NAME, "Tu Nombre");
-        bdParams.putDouble(EnvironmentFields.K_PARAMS_IMC, dIMC);
-        intNext.putExtras(bdParams);
-
-        intNext.putExtra(EnvironmentFields.K_PARAMS_NAME, "Hola");
+        Intent intNext = new Intent(this, ChatActivity.class);
+//        Bundle bdParams = new Bundle();
+//        bdParams.putString(EnvironmentFields.K_PARAMS_NAME, "Tu Nombre");
+//        bdParams.putDouble(EnvironmentFields.K_PARAMS_IMC, dIMC);
+//        intNext.putExtras(bdParams);
+//
+//        intNext.putExtra(EnvironmentFields.K_PARAMS_NAME, "Hola");
         startActivity(intNext);
 
     }

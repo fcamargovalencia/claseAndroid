@@ -2,6 +2,9 @@ package imc.cursoandroid.gdgcali.com.imccalculator.util;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+
+import com.firebase.client.Firebase;
+
 import imc.cursoandroid.gdgcali.com.imccalculator.api.Server;
 import retrofit.RestAdapter;
 
@@ -18,6 +21,7 @@ public class IMCCalculatorAplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Firebase.setAndroidContext(this);
         Server.getInstance().init(EnvironmentFields.SERVER_IAGREE, this);
 //        saveFieldConstants();
         sharedPreferences = getApplicationContext().getSharedPreferences(EnvironmentFields.PREF_SP, MODE_PRIVATE);
