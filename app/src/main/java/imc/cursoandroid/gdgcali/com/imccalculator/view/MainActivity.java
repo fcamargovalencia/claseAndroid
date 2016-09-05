@@ -121,10 +121,10 @@ public class MainActivity extends Activity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(context, "Nueva info...", Toast.LENGTH_LONG).show();
-                List<ResultModel> lstFirebaseModel = (List<ResultModel>) dataSnapshot.getValue();
+                ResultModel firebaseRM = dataSnapshot.getValue(ResultModel.class);
 
 
-                        adapterRecycler = new ResultRecyclerAdapter( lstResult, context);
+                adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
                 recyclerView.setAdapter(adapterRecycler);
 
             }
