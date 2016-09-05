@@ -4,7 +4,8 @@ package imc.cursoandroid.gdgcali.com.imccalculator.model;
  * Created by joseberna on 29/07/16.
  */
 public class ResultModel {
-    private double id;
+    private int cont = 0;
+    private String id;
     private double peso;
     private double altura;
     private double imc;
@@ -13,17 +14,17 @@ public class ResultModel {
     }
 
     public ResultModel(double peso, double altura, double imc) {
-        this.id = id;
+        this.id = getIdmodel();
         this.peso = peso;
         this.altura = altura;
         this.imc = imc;
     }
 
-    public double getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(double id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,5 +50,10 @@ public class ResultModel {
 
     public void setImc(double imc) {
         this.imc = imc;
+    }
+
+    private String getIdmodel() {
+
+        return (int) (Math.random() * 100) + "";
     }
 }

@@ -26,6 +26,7 @@ public class EnvironmentFields {
 
 
     public static final String PREF_SP = "iagree";
+    public static final String PREF_IMC_SP = "iagree_imc";
 
 
     public static final String BODY_IAGREE = "{'persistenceName':'172.16.32.81'," +

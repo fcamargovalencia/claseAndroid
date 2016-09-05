@@ -81,7 +81,7 @@ public class MainActivity extends Activity {
         Toast.makeText(context, "Calculando...", Toast.LENGTH_LONG).show();
         dPeso = Double.parseDouble(peso.getText().toString());
         dAltura = Double.parseDouble(altura.getText().toString());
-        dIMC = dPeso / dAltura * dAltura;
+        dIMC = dPeso / (dAltura * dAltura);
         ResultModel resultModel = new ResultModel(dPeso, dAltura, dIMC);
         lstResult.add(resultModel);
         //adapter = new ResultAdapter(lstResult, context);
@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
             FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
             DatabaseReference databaseReference = firebaseDatabase.getReference();
 
-            databaseReference.child(EnvironmentFields.PREF_SP).child(result.getId() + "").setValue(result);
+            databaseReference.child(EnvironmentFields.PREF_IMC_SP).child(result.getId() + "").setValue(result);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
