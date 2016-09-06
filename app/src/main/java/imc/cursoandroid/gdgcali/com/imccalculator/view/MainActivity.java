@@ -76,6 +76,16 @@ public class MainActivity extends Activity {
 
     }
 
+    @OnClick(R.id.id_btn_camara)
+    public void takePicture() {
+        try {
+            Intent intCamara = new Intent(this, UploadPictureActivity.class);
+            startActivity(intCamara);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
     @OnClick(R.id.id_btn_calcular)
     public void calcular() {
         Toast.makeText(context, "Calculando...", Toast.LENGTH_LONG).show();
