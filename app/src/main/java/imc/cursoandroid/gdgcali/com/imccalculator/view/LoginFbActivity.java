@@ -40,6 +40,11 @@ public class LoginFbActivity extends Activity {
     @BindView(R.id.id_buttonLogin)
     Button buttonLogin;
 
+    @BindView(R.id.facebook)
+    Button buttonFacebook;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,27 +54,17 @@ public class LoginFbActivity extends Activity {
         context = this;
         SharedPreferences sharedPref = context.getSharedPreferences(
                 "credenciales", context.MODE_PRIVATE);
-//        if (sharedPref.contains("email")) {
-//            Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        setContentView(R.layout.activity_login_fb);
-//        context = this;
-//        SharedPreferences sharedPref = context.getSharedPreferences(
-//                "credenciales", context.MODE_PRIVATE);
-//        if (sharedPref.contains("email")) {
-//            Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
+    @OnClick(R.id.facebook)
+    public void sigWithFace() {
+        try {
 
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
 
 
     @OnClick(R.id.id_buttonLogin)
