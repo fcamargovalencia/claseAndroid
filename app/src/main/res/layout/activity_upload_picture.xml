@@ -31,4 +31,11 @@
         android:onClick="uploadPicture"
         android:text="@string/upload_photo"></Button>
 
+    <Button
+        android:id="@+id/button_download"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/download"></Button>
+
 </LinearLayout>

@@ -8,6 +8,7 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
+    <string name="download">Download Pictures</string>
     <string name="photo">Take picture</string>
     <string name="upload_photo">Upload picture</string>
     <string name="prompt_password">Password (optional)</string>
@@ -20,6 +21,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_download_file">DownloadFileActivity</string>
 
 
 </resources>

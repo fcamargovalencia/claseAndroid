@@ -17,4 +17,5 @@
     <string name="photo">Take picture</string>
     <string name="webService">Web Service</string>
     <string name="upload_photo">Upload picture</string>
+    <string name="download">Download Pictures</string>
 </resources>

@@ -63,6 +63,7 @@ public class UploadPictureActivity extends Activity {
         Button button = (Button) findViewById(R.id.button1);
         Button buttonGalery = (Button) findViewById(R.id.buttongalery);
         Button buttonUpload = (Button) findViewById(R.id.button_upload);
+        Button download = (Button) findViewById(R.id.button_download);
         context = this;
         File root = new File(Environment
                 .getExternalStorageDirectory()
@@ -116,7 +117,8 @@ public class UploadPictureActivity extends Activity {
                     picturesRef = storageRef.child("images/" + cont);
                     ByteArrayOutputStream baos = new ByteArrayOutputStream();
                     Bitmap bitmap = imgPicture.getDrawingCache();
-                    image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+//                    image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                    image.compress(Bitmap.CompressFormat.PNG, 100, baos);
                     byte[] dataByte = baos.toByteArray();
 //                    UploadTask uploadTask = storageRef.putBytes(dataByte);
                     UploadTask uploadTask = picturesRef.putBytes(dataByte);
@@ -139,6 +141,14 @@ public class UploadPictureActivity extends Activity {
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
+            }
+        });
+
+        download.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intNext = new Intent(context, DownloadFileActivity.class);
+                startActivity(intNext);
             }
         });
 

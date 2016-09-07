@@ -10,10 +10,9 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
+    <uses-feature android:name="android.hardware.camera" />
 
-    <uses-feature android:name="android.hardware.camera"></uses-feature>
-    <!--<uses-feature android:name="android.hardware.camera" android:required="true"></uses-feature>-->
-
+    <!-- <uses-feature android:name="android.hardware.camera" android:required="true"></uses-feature> -->
     <application
         android:name=".util.IMCCalculatorAplication"
         android:allowBackup="true"
@@ -62,9 +61,11 @@
         <activity
             android:name=".view.UploadPictureActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:screenOrientation="sensorPortrait"></activity>
-
-
+            android:screenOrientation="sensorPortrait" />
+        <activity
+            android:name=".view.DownloadFileActivity"
+            android:label="@string/title_activity_download_file"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
