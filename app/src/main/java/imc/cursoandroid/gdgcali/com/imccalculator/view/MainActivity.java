@@ -123,6 +123,12 @@ public class MainActivity extends Activity {
                 Toast.makeText(context, "Nueva info...", Toast.LENGTH_LONG).show();
                 Map<String, ResultModel> lstFirebaseModel = (Map<String, ResultModel>) dataSnapshot.getValue();
                 lstResult = new ArrayList<>(lstFirebaseModel.values());
+                ResultModel firebaseRM = dataSnapshot.getValue(ResultModel.class);
+
+
+                adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
+                recyclerView.setAdapter(adapterRecycler);
+
 
             }
 
