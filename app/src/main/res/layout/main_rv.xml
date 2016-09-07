@@ -89,10 +89,19 @@
                 android:text="@string/calcular" />
 
             <Button
+                android:id="@+id/id_btn_camara"
+                android:layout_width="100dp"
+                android:layout_height="45dp"
+                android:layout_marginLeft="10dp"
+                android:onClick="can"
+                android:text="@string/photo" />
+
+
+            <Button
                 android:id="@+id/id_btn_cancelar"
                 android:layout_width="100dp"
                 android:layout_height="45dp"
-                android:layout_marginLeft="60dp"
+                android:layout_marginLeft="10dp"
                 android:onClick="can"
                 android:text="@string/cancelar" />
 
@@ -107,9 +116,9 @@
         android:layout_marginTop="20dp">
 
         <!--<ListView-->
-            <!--android:id="@+id/id_lstview"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
+        <!--android:id="@+id/id_lstview"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content">-->
 
         <!--</ListView>-->
         <android.support.v7.widget.RecyclerView
@@ -122,19 +131,20 @@
 
     <LinearLayout
         android:layout_width="fill_parent"
-        android:orientation="horizontal"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_linear2"
         android:layout_marginTop="10dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <Button
             android:id="@+id/id_howisicm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="howIs"
             android:clickable="true"
+            android:onClick="howIs"
             android:text="@string/how_is" />
+
         <Button
             android:id="@+id/id_ws"
             android:layout_width="wrap_content"

@@ -8,6 +8,7 @@ public class EnvironmentFields {
     public static String K_PARAMS_NAME = "KPN";
     public static String K_PARAMS_ID = "KPI";
     public static String K_PARAMS_IMC = "KPIMC";
+    public static final int PIC_PICK_FROM_FILE = 3;
 
 
     public static final String SERVER = "http://www.jovitahandmade.com";
@@ -27,6 +28,7 @@ public class EnvironmentFields {
 
     public static final String PREF_SP = "iagree";
     public static final String PREF_IMC_SP = "iagree_imc";
+    public static final String DIRECTORY_PICTURES = "images/";
 
 
     public static final String BODY_IAGREE = "{'persistenceName':'172.16.32.81'," +
