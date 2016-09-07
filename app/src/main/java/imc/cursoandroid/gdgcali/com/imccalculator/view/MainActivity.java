@@ -20,6 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,13 +84,12 @@ public class MainActivity extends Activity {
         dAltura = Double.parseDouble(altura.getText().toString());
         dIMC = dPeso / (dAltura * dAltura);
         ResultModel resultModel = new ResultModel(dPeso, dAltura, dIMC);
-        lstResult.add(resultModel);
+        //lstResult.add(resultModel);
         //adapter = new ResultAdapter(lstResult, context);
         //lvResults.setAdapter(adapter);
-
+        uploadFirebase(resultModel);
         adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapterRecycler);
@@ -98,7 +98,7 @@ public class MainActivity extends Activity {
         peso.setText("");
         altura.setText("");
 
-        uploadFirebase(resultModel);
+
     }
 
     private void uploadFirebase(Object resultModel) {
@@ -121,11 +121,8 @@ public class MainActivity extends Activity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Toast.makeText(context, "Nueva info...", Toast.LENGTH_LONG).show();
-                List<ResultModel> lstFirebaseModel = (List<ResultModel>) dataSnapshot.getValue();
-
-
-                        adapterRecycler = new ResultRecyclerAdapter( lstResult, context);
-                recyclerView.setAdapter(adapterRecycler);
+                Map<String, ResultModel> lstFirebaseModel = (Map<String, ResultModel>) dataSnapshot.getValue();
+                lstResult = new ArrayList<>(lstFirebaseModel.values());
 
             }
 
