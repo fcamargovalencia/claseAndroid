@@ -18,4 +18,6 @@
     <string name="webService">Web Service</string>
     <string name="upload_photo">Upload picture</string>
     <string name="download">Download Pictures</string>
+    <string name="maps">View Maps</string>
+    <string name="title_activity_download_file">DownloadFileActivity</string>
 </resources>
