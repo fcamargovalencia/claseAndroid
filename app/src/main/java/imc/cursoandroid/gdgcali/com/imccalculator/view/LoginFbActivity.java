@@ -49,26 +49,9 @@ public class LoginFbActivity extends Activity {
         context = this;
         SharedPreferences sharedPref = context.getSharedPreferences(
                 "credenciales", context.MODE_PRIVATE);
-//        if (sharedPref.contains("email")) {
-//            Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
+
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        setContentView(R.layout.activity_login_fb);
-//        context = this;
-//        SharedPreferences sharedPref = context.getSharedPreferences(
-//                "credenciales", context.MODE_PRIVATE);
-//        if (sharedPref.contains("email")) {
-//            Intent intent = new Intent(LoginFbActivity.this, MainActivity.class);
-//            startActivity(intent);
-//            finish();
-//        }
-//    }
 
 
 
