@@ -14,4 +14,10 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password (optional)</string>
     <string name="title_activity_login">Sign in</string>
+    <string name="photo">Take picture</string>
+    <string name="webService">Web Service</string>
+    <string name="upload_photo">Upload picture</string>
+    <string name="download">Download Pictures</string>
+    <string name="maps">View Maps</string>
+    <string name="title_activity_download_file">DownloadFileActivity</string>
 </resources>
