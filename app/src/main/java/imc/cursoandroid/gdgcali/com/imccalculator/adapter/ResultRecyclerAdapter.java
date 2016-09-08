@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import imc.cursoandroid.gdgcali.com.imccalculator.R;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.ResultModel;

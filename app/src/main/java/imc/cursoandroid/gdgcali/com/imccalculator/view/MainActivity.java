@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_rv);
         database = FirebaseDatabase.getInstance().getReference();
-        myRef = database.child("condition");
+        //myRef = database.child("condition");
 
         ButterKnife.bind(this);
         context = this;
@@ -88,13 +88,7 @@ public class MainActivity extends Activity {
         //adapter = new ResultAdapter(lstResult, context);
         //lvResults.setAdapter(adapter);
         uploadFirebase(resultModel);
-        adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(adapterRecycler);
-
-
+        //adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
         peso.setText("");
         altura.setText("");
 
@@ -120,14 +114,18 @@ public class MainActivity extends Activity {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                lstResult.clear();
                 Toast.makeText(context, "Nueva info...", Toast.LENGTH_LONG).show();
-                Map<String, ResultModel> lstFirebaseModel = (Map<String, ResultModel>) dataSnapshot.getValue();
-                lstResult = new ArrayList<>(lstFirebaseModel.values());
-                ResultModel firebaseRM = dataSnapshot.getValue(ResultModel.class);
+                //Map<String, ResultModel> lstFirebaseModel = (Map<String, ResultModel>) dataSnapshot.getValue();
+                if (dataSnapshot != null || dataSnapshot.getChildrenCount() > 0) {
 
-
-                adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
-                recyclerView.setAdapter(adapterRecycler);
+                    for (DataSnapshot data : dataSnapshot.getChildren()) {
+                        ResultModel result = data.getValue(ResultModel.class);
+                        lstResult.add(result);
+                        adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
+                    }
+                    cargarAdaptador();
+                }
 
 
             }
@@ -164,5 +162,12 @@ public class MainActivity extends Activity {
         super.onStart();
         listenerFirebase();
 
+    }
+
+    public void cargarAdaptador() {
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.setAdapter(adapterRecycler);
     }
 }
