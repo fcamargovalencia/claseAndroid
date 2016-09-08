@@ -3,10 +3,13 @@ package imc.cursoandroid.gdgcali.com.imccalculator.view;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -26,10 +29,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import imc.cursoandroid.gdgcali.com.imccalculator.R;
+import imc.cursoandroid.gdgcali.com.imccalculator.access.IagreeDBHandler;
 import imc.cursoandroid.gdgcali.com.imccalculator.adapter.ResultAdapter;
 import imc.cursoandroid.gdgcali.com.imccalculator.adapter.ResultRecyclerAdapter;
 import imc.cursoandroid.gdgcali.com.imccalculator.api.Server;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.ResultModel;
+import imc.cursoandroid.gdgcali.com.imccalculator.model.dao.ResultModelDAO;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.iagree.ObligationsModel;
 import imc.cursoandroid.gdgcali.com.imccalculator.model.wp.RecentPostAnswer;
 import imc.cursoandroid.gdgcali.com.imccalculator.util.EnvironmentFields;
@@ -38,7 +43,7 @@ import retrofit.RetrofitError;
 import retrofit.client.Response;
 
 public class MainActivity extends Activity {
-    Context context;
+    static Context context;
     DatabaseReference database;
     DatabaseReference myRef;
 
@@ -61,6 +66,8 @@ public class MainActivity extends Activity {
     RecyclerView recyclerView;
 
 
+    static ResultModelDAO dao;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +80,6 @@ public class MainActivity extends Activity {
         lstResult = new ArrayList<>();
         //loadRecentPost();
         //loadObligations();
-
 
     }
 
@@ -98,11 +104,47 @@ public class MainActivity extends Activity {
         //adapter = new ResultAdapter(lstResult, context);
         //lvResults.setAdapter(adapter);
         uploadFirebase(resultModel);
+        try {
+            saveRecordDB(resultModel);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        getRecord();
         //adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
         peso.setText("");
         altura.setText("");
 
 
+    }
+
+    public static void getRecord() {
+        try {
+            dao = new ResultModelDAO(context);
+            Cursor cursor = dao.getAllResultModels();
+            ArrayList<ResultModel> mArrayList = new ArrayList<ResultModel>();
+            for (cursor.moveToFirst(); !cursor.isAfterLast(); cursor.moveToNext()) {
+                // The Cursor is now set to the right position
+                Log.i("DB", cursor.getString(cursor.getColumnIndex("imc")));
+
+            }
+
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public static boolean saveRecordDB(ResultModel resultModel) {
+        boolean save = false;
+        try {
+            dao = new ResultModelDAO(context);
+
+            dao.saveRecord(resultModel);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return save;
     }
 
     private void uploadFirebase(Object resultModel) {
