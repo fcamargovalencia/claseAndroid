@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
     @BindView(R.id.recycler_view)
     RecyclerView recyclerView;
 
-
+    IagreeDBHandler dbHandler;
     static ResultModelDAO dao;
 
     @Override
@@ -77,6 +77,7 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
         context = this;
+        dbHandler = new IagreeDBHandler(context,22);
         lstResult = new ArrayList<>();
         //loadRecentPost();
         //loadObligations();
@@ -111,6 +112,7 @@ public class MainActivity extends Activity {
         }
 
         getRecord();
+        IagreeDBHandler.closeConnection();
         //adapterRecycler = new ResultRecyclerAdapter(lstResult, context);
         peso.setText("");
         altura.setText("");
@@ -221,5 +223,11 @@ public class MainActivity extends Activity {
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(adapterRecycler);
+    }
+
+    @OnClick(R.id.id_btn_maps)
+    public void irAMaps(){
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
     }
 }

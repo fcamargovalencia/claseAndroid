@@ -152,6 +152,13 @@
             android:clickable="true"
             android:text="@string/webService" />
 
+        <Button
+            android:id="@+id/id_btn_maps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:text="Maps"/>
+
 
 
     </LinearLayout>
