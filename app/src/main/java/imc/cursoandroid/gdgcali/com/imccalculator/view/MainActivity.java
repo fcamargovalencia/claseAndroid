@@ -194,14 +194,14 @@ public class MainActivity extends Activity {
     @OnClick(R.id.id_howisicm)
     public void howIs() {
         Toast.makeText(context, "Abriendo otro activity...", Toast.LENGTH_LONG).show();
-        Intent intNext = new Intent(this, ChatActivity.class);
+//        Intent intNext = new Intent(this, ChatActivity.class);
 //        Bundle bdParams = new Bundle();
 //        bdParams.putString(EnvironmentFields.K_PARAMS_NAME, "Tu Nombre");
 //        bdParams.putDouble(EnvironmentFields.K_PARAMS_IMC, dIMC);
 //        intNext.putExtras(bdParams);
 //
 //        intNext.putExtra(EnvironmentFields.K_PARAMS_NAME, "Hola");
-        startActivity(intNext);
+//        startActivity(intNext);
 
     }
 

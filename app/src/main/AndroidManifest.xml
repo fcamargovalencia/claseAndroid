@@ -61,7 +61,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.AdminUserFBActivity" />
-        <activity android:name=".view.ChatActivity" />
         <activity android:name=".view.MessageActivity" />
         <activity
             android:name=".view.UploadPictureActivity"
